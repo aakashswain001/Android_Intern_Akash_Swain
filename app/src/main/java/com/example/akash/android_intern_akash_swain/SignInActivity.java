@@ -1,5 +1,6 @@
 package com.example.akash.android_intern_akash_swain;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -62,7 +71,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent myIntent = new Intent(SignInActivity.this, MainActivity.class);
+                    Intent myIntent = new Intent(SignInActivity.this, CheckUserActivity.class);
                     SignInActivity.this.startActivity(myIntent);
                     finish();
                 } else {
@@ -103,6 +112,30 @@ public class SignInActivity extends AppCompatActivity {
                 // ...
             }
         }
+
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d("er", "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d("as", "signInWithCredential:onComplete:" + task.isSuccessful());
+                        Intent i = new Intent(SignInActivity.this,CheckUserActivity.class);
+                        SignInActivity.this.startActivity(i);
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.w("df", "signInWithCredential", task.getException());
+                            Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     @Override
@@ -119,25 +152,4 @@ public class SignInActivity extends AppCompatActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(SignInActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
 }

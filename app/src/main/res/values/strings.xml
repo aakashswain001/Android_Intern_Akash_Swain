@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Android_Intern_Akash_Swain</string>
+    <string-array name="city_array">
+        <item>449 Palo Verde Road, Gainesville, FL
+</item>
+        <item>6731 Thompson Street, Gainesville, FL
+</item>
+        <item>8771 Thomas Boulevard, Orlando, FL</item>
+        <item>1234 Verano Place, Orlando, FL
+</item>
+    </string-array>
+    <string name="select">Select city</string>
 </resources>

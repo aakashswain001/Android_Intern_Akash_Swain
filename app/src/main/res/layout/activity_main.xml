@@ -1,40 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="com.example.akash.android_intern_akash_swain.MainActivity">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.akash.android_intern_akash_swain.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/signInToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"></android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
     <TextView
         android:id="@+id/name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/appBarLayout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         android:text="Hello User"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
-        android:id="@+id/email_text_view"
+        android:id="@+id/hint_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Leasing Managers"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_below="@id/name_text_view"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Please select your city"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
-
-        android:id="@+id/sign_out_button"
-        android:layout_height="wrap_content"
-        android:text="Sign Out"
-        android:layout_width="100dp" />
-
-    <Button
-
         android:id="@+id/next"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:background="@drawable/border"
+        android:backgroundTint="#0066ef"
         android:text="Next"
-        android:layout_width="100dp" />
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
-</LinearLayout>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/hint_text_view"
+        android:layout_margin="20dp"
+        android:background="@drawable/border"
+        android:prompt="@string/select"></Spinner>
+
+</RelativeLayout>

@@ -1,13 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="com.example.akash.android_intern_akash_swain.HomeScreenActivity">
-<com.getbase.floatingactionbutton.AddFloatingActionButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/flmenu"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"/>
-</RelativeLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    tools:context="com.example.akash.android_intern_akash_swain.HomeScreenActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/signInToolBar"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"></android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.rey.material.widget.Button
+            android:id="@+id/dis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Discussions"
+            android:textSize="16sp" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/btnnew"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+
+            android:text="New Post"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <com.rey.material.widget.Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="LOGOUT" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/blog_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="#eeeeee"
+        android:padding="10dp"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

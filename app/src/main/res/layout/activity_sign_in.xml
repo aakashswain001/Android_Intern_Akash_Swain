@@ -5,11 +5,10 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:gravity="center"
     android:orientation="vertical"
-    android:paddingTop="100dp"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
     tools:context="com.example.akash.android_intern_akash_swain.SignInActivity">
 
 

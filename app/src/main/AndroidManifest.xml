@@ -16,9 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".HomeScreenActivity" />
-        <activity android:name=".NewPostActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:noHistory="true"/>
+        <activity
+            android:name=".HomeScreenActivity"
+           />
+        <activity
+            android:name=".NewPostActivity"
+            android:parentActivityName=".HomeScreenActivity" />
+        <activity
+            android:name=".CheckUserActivity"
+            android:noHistory="true" />
+        <activity android:name=".DiscussionsActivity"
+            android:parentActivityName=".HomeScreenActivity"></activity>
     </application>
 
 </manifest>
